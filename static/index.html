@@ -1,97 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Section</title>
-    <script src="vue/vue-dev.js"></script>
-    <script src="vue/vue-router.js"></script>
-    <script src="element/index.js"></script>
-    <link rel="stylesheet" href="element/index.css" />
-    <link rel="stylesheet" href="css/index.css" />
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
-    <script>
-      function reactText() {
-        var inStr = document.getElementById("input").value;
-        var outStr = "";
-        for (var i = 0; i < inStr.length; i++) {
-          var indexStr = inStr.substr(i, 1);
-          if (indexStr.indexOf("你") > -1) {
-            indexStr = "我";
-          } else if (indexStr.indexOf("我") > -1) {
-            indexStr = "你";
-          }
-          outStr += indexStr;
+<head>
+  <meta charset="UTF-8" />
+  <title>Section</title>
+  <script src="vue/vue-dev.js"></script>
+  <script src="vue/vue-router.js"></script>
+  <script src="element/index.js"></script>
+  <link rel="stylesheet" href="element/index.css" />
+  <link rel="stylesheet" href="css/index.css" />
+
+  <script>
+    function reactText() {
+      var inStr = document.getElementById("input").value;
+      var outStr = "";
+      for (var i = 0; i < inStr.length; i++) {
+        var indexStr = inStr.substr(i, 1);
+        if (indexStr.indexOf("你") > -1) {
+          indexStr = "我";
+        } else if (indexStr.indexOf("我") > -1) {
+          indexStr = "你";
         }
-        document.getElementById("output").value = outStr;
+        outStr += indexStr;
       }
-    </script>
-  </head>
-  <body>
-    <template id="inputTemplate">
-      <div>
-        <el-form-item label="选择">
-          <input type="file" id="file" v-on:change="chooseFile(this)" />
-        </el-form-item>
-        <el-form-item>
-          <el-col :span="4" class="label">你选择了</el-col>
-          <el-col :span="20">{{filename}}</el-col>
-        </el-form-item>
-        <el-form-item>
-          <el-col :span="4" class="label">input:</el-col>
-          <el-col :span="20">
-            <textarea
-              id="input"
-              onchange="reactText()"
-              style="width: 100%; height: 100%; min-height: 250px;"
-            ></textarea>
-          </el-col>
-        </el-form-item>
-      </div>
-    </template>
-    <template id="home">
-      <div>
-        <el-form label-width="100px">
-          <input-vue></input-vue>
-        </el-form>
-      </div>
-    </template>
+      document.getElementById("output").value = outStr;
+    }
+  </script>
+</head>
 
-    <div id="appVue">
+<body>
+
+  <div id="appVue">
+    <el-container>
+      <el-header>
+        <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff"
+          active-text-color="#ffd04b" router default-active="/home" @select="handleSelect">
+          <el-menu-item index="/home" ac>打开</el-menu-item>
+          <el-menu-item index="/menu">目录</el-menu-item>
+          <el-menu-item index="/context">详情</el-menu-item>
+        </el-menu>
+      </el-header>
       <el-container>
-        <el-header>
-          <el-menu
-            class="el-menu-demo"
-            mode="horizontal"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b"
-          >
-            <!-- <router-link to="/home">Go to Foo</router-link> -->
-            <el-menu-item index="/home">处理中心</el-menu-item>
-            <el-submenu index="2">
-              <template slot="title">我的工作台</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
-              <el-menu-item index="2-3">选项3</el-menu-item>
-              <el-submenu index="2-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="2-4-1">选项1</el-menu-item>
-                <el-menu-item index="2-4-2">选项2</el-menu-item>
-                <el-menu-item index="2-4-3">选项3</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-menu-item index="/bar">消息中心</el-menu-item>
-          </el-menu>
-        </el-header>
-        <el-container>
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-container>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
-    </div>
-    <script></script>
-    <script src="js/appVue.js"></script>
-    <script src="js/router.js"></script>
-  </body>
+    </el-container>
+  </div>
+  <script></script>
+  <script src="js/inputVue.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/appVue.js"></script>
+
+</body>
+
 </html>

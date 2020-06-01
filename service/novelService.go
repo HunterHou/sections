@@ -7,9 +7,12 @@ import (
 	"strings"
 )
 import (
-	"../data"
 	"../model"
 )
+
+func Nothing() {
+
+}
 
 func ReadFile(filepath string) {
 	outStream, openErr := os.Open(filepath)
@@ -19,7 +22,8 @@ func ReadFile(filepath string) {
 	defer outStream.Close()
 	reader := bufio.NewReader(outStream)
 
-	var novels = []model.Novel{}
+	var novelsMap = map[string]model.Novel{}
+	var menus []string
 	title := ""
 	context := ""
 	for {
@@ -38,11 +42,14 @@ func ReadFile(filepath string) {
 					Title:   title,
 					Context: context,
 				}
-				novels = append(novels, curNovel)
+				novelsMap[title] = curNovel
+				menus = append(menus, title)
+				context = ""
 			}
 			title = lineStr
 		}
-		context += "\n" + lineStr
+		context += "<br>" + lineStr
 	}
-	data.LibNovel = novels
+	model.LibMap = novelsMap
+	model.LibMenu = menus
 }

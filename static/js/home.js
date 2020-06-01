@@ -12,6 +12,8 @@ var homeVue = {
     },
     data: function () {
         return {}
+    },
+    methods:{
     }
 }
 

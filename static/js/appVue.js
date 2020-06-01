@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //根组件 vue app
 var app = new Vue({
   el: "#appVue",
@@ -18,7 +12,11 @@ var app = new Vue({
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath)
+      // this.activeIndex=keyPath
+      // console.log(key, keyPath)
     },
+    checkout(){
+      this.activeIndex="/context"
+    }
   }
 });

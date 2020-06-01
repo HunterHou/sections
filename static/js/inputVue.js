@@ -25,12 +25,19 @@ var inputVue = {
         chooseFile() {
             var input = document.getElementById("file");
             var reader = new FileReader();
+            if (!input || input.files.length == 0) {
+                this.filename = ""
+                return
+            }
             var file = input.files[0];
             reader.readAsText(file);
             reader.onload = function () {
                 document.getElementById("input").value = this.result;
             };
             this.filename = input.files[0].path;
+
+            go(ChooseFile, this.filename)
+
         },
     },
 };

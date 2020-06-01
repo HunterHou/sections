@@ -18,24 +18,27 @@ var inputVue = {
     },
   },
 };
-var Home = {
-  el: "#home",
-  data: function () {
-    return {};
-  },
-};
+var Home =new Vue (
+  {
+    el: "#home",
+    data: function () {
+      return {};
+    },
+  }
+);
 
 //根组件 vue app
-// const Foo = { template: '<div>foo</div>' }
-// const Bar = { template: '<div>bar</div>' }
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
 
-// const routes = [{ path: "/home", component: Foo }];
-// const vrouter = new VueRouter({
-//   routes,
-// });
+const routes = [{ path: "/home", component: Home },{ path: "/bar", component: Bar }];
+const router = new VueRouter({
+  routes,
+});
 
 var app = new Vue({
   el: "#appVue",
+  router:router,
   components: {
     "input-vue": inputVue,
   },

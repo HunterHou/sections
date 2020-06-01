@@ -23,6 +23,7 @@ var inputVue = {
     },
     methods: {
         chooseFile() {
+            var self =this
             var input = document.getElementById("file");
             var reader = new FileReader();
             if (!input || input.files.length == 0) {
@@ -35,8 +36,10 @@ var inputVue = {
                 document.getElementById("input").value = this.result;
             };
             this.filename = input.files[0].path;
-
-            go(ChooseFile, this.filename)
+            var data = {"Code": ChooseFile, "Message": this.filename}
+            astilectron.sendMessage(JSON.stringify(data), function (message) {
+                self.$router.push("/menu")
+            });
 
         },
     },

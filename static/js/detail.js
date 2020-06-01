@@ -9,8 +9,9 @@ var detail = {
         }
     },
     mounted: function () {
-
+        document.title = "详情"
         if (curData) {
+            document.title = curData.Title
             this.title = curData.Title
             this.context = curData.Context
         }

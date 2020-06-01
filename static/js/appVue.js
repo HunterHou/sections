@@ -6,7 +6,7 @@ var app = new Vue({
     "input-vue": inputVue,
   },
   data: {
-    headTitle: "helloworld!!!",
+    headTitle: "首页!!!",
     outContext: "",
     activeIndex: "/home",
   },
@@ -14,9 +14,16 @@ var app = new Vue({
     handleSelect(key, keyPath) {
       // this.activeIndex=keyPath
       // console.log(key, keyPath)
+      if (key=="/home"){
+        this.headTitle="首页"
+      }
+      if (key=="/menu"){
+        this.headTitle="目录"
+      }
+      if (key=="/context"){
+        this.headTitle="详情"
+      }
+      document.title = this.headTitle
     },
-    checkout(){
-      this.activeIndex="/context"
-    }
   }
 });

@@ -14,6 +14,7 @@ var menu = {
         }
     },
     mounted:function () {
+        document.title = "目录"
         this.datas=dataLib
     },
     methods:{
@@ -24,8 +25,6 @@ var menu = {
             astilectron.sendMessage(JSON.stringify(data), function (message) {
                 console.log("send callback: " + message.Code)
                 curData = message.Data
-                document.getElementById("curTab").value = "/context"
-                self.$root.activeIndex =[ "/context"]
                 self.$router.push("/context")
             });
 

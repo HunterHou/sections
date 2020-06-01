@@ -10,11 +10,11 @@ import (
 )
 import "./model"
 
-
 var path string
+
 // 将小说 俺章节拆分多个文本文件
-func init()  {
-	flag.StringVar(&path,"path","d:\\6028.txt","logo")
+func init() {
+	flag.StringVar(&path, "path", "d:\\6028.txt", "logo")
 }
 
 func main() {
@@ -40,7 +40,7 @@ func main() {
 		}
 		if strings.HasPrefix(lineStr, "第") && strings.Contains(lineStr, "章") {
 			//开始章节
-			if title !="" {
+			if title != "" {
 				curNovel := model.Novel{
 					Title:   title,
 					Context: context,
@@ -49,17 +49,17 @@ func main() {
 			}
 			title = lineStr
 		}
-		context += "\n"+lineStr
+		context += "\n" + lineStr
 		//context+="/r/n"
 	}
 	for _, nove := range novels {
 		fmt.Println(nove.Title)
 		filename := nove.Title + ".txt"
-		curPath,_:=filepath2.Abs(".")
-		curPath=curPath+"\\novel\\"
-		section, createErr := os.Create(curPath+filename,)
+		curPath, _ := filepath2.Abs(".")
+		curPath = curPath + "\\novel\\"
+		section, createErr := os.Create(curPath + filename)
 		if createErr != nil {
-			fmt.Println("创建失败",createErr)
+			fmt.Println("创建失败", createErr)
 			break
 		}
 		defer section.Close()

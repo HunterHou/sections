@@ -1,32 +1,30 @@
 var menuhtml = '<div><h1>目录</h1>'
     + '<ul>'
-    + '    <li v-for="Title in datas" :key="datas.index">'
-    + '<a @click="open(Title)">{{ Title }}</a> '
+    + '<li v-for="(item,index) in datas" :key="datas.index">'
+    + '<el-link @click="open(item)">{{ item }}</el-link> '
+    + '<hr v-if="(index+1)%3 ==0" >'
     + '</li>'
     + '</ul>'
     + '</div>'
 
 var menu = {
+
     template: menuhtml,
     data: function () {
         return {
             datas: ""
         }
     },
-    mounted:function () {
+    mounted: function () {
         document.title = "目录"
-        this.datas=dataLib
+        this.datas = dataLib
     },
-    methods:{
-        open(filename){
-            var self =this
+    methods: {
+        open(filename) {
+            var self = this
             console.log(filename)
-            var data = {"Code":FindOne, "Message": filename}
-            astilectron.sendMessage(JSON.stringify(data), function (message) {
-                console.log("send callback: " + message.Code)
-                curData = message.Data
-                self.$router.push("/context")
-            });
+            self.$router.push("/context/" + filename)
+
 
         }
     }

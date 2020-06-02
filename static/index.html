@@ -2,45 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>首页</title>
-  <script src="vue/vue-dev.js"></script>
-  <script src="vue/vue-router.js"></script>
-  <script src="element/index.js"></script>
-  <link rel="stylesheet" href="element/index.css" />
-  <link rel="stylesheet" href="css/index.css" />
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <script src="vue/vue-dev.js"></script>
+    <script src="vue/vue-router.js"></script>
+    <script src="element/index.js"></script>
+    <link rel="stylesheet" href="element/index.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+
+    <style>
+        .li {
+            float: left;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="msg">
-  </div>
-  <div id="appVue">
+<div id="msg">
+</div>
+<div id="appVue">
     <el-container>
-      <el-header>
-        <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff" id="menu"
-          active-text-color="#ffd04b" router default-active="/home" @select="handleSelect">
-          <el-menu-item index="/home" ac>打开</el-menu-item>
-          <el-menu-item index="/menu">目录</el-menu-item>
-          <el-menu-item index="/context">详情</el-menu-item>
-        </el-menu>
-      </el-header>
-      <el-container>
-        <el-main>
-          <router-view></router-view>
-          <input type="hidden" id="curTab" v-model="activeIndex">
-        </el-main>
-      </el-container>
+        <el-header>
+            <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff" id="menu"
+                     active-text-color="#ffd04b" router default-active="/home" @select="handleSelect">
+                <el-menu-item index="/home" ac>打开</el-menu-item>
+                <el-menu-item index="/menu">目录</el-menu-item>
+                <el-menu-item index="/context">详情</el-menu-item>
+            </el-menu>
+        </el-header>
+        <el-container>
+            <el-main>
+                <router-view></router-view>
+                <input type="hidden" id="curTab" v-model="activeIndex">
+            </el-main>
+        </el-container>
     </el-container>
-  </div>
-  <script src="js/const.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/go.js"></script>
-  <script src="js/inputVue.js"></script>
-  <script src="js/home.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/detail.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/appVue.js"></script>
+</div>
+<script src="js/const.js"></script>
+<script src="js/go.js"></script>
+<script src="js/inputVue.js"></script>
+<script src="js/home.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/detail.js"></script>
+<script src="js/router.js"></script>
+<script src="js/appVue.js"></script>
 
 </body>
 

@@ -36,9 +36,9 @@ var inputVue = {
                 document.getElementById("input").value = this.result;
             };
             this.filename = input.files[0].path;
-            var data = {"Code": ChooseFile, "Message": this.filename}
+            var data = { "Code": ChooseFile, "Message": this.filename }
             astilectron.sendMessage(JSON.stringify(data), function (message) {
-                self.$message({
+                self.$notify({
                     type: "success",
                     message: "解析成功"
                 })

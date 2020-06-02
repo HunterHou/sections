@@ -1,10 +1,11 @@
 var menuhtml = '<div><h1>目录</h1>'
-    + '<ul>'
-    + '<li v-for="(item,index) in datas" :key="datas.index">'
+    + '<ul  class="infinite-list" style="overflow:auto">'
+    + '<li class="infinite-list-item" v-for="(item,index) in datas" :key="datas.index">'
     + '<el-link @click="open(item)">{{ item }}</el-link> '
     + '<hr v-if="(index+1)%3 ==0" >'
     + '</li>'
     + '</ul>'
+    + ''
     + '</div>'
 
 var menu = {

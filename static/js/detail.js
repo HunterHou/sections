@@ -3,12 +3,12 @@ var detailHtml = '<div>'
     + '<div v-if="title">'
     + '<h1>{{title}}</h1>'
     + '<el-button style="float: left; left:0px;" @click="lastPage" class="floatButton" icon="el-icon-back"></el-button>'
-    + '<el-button style="float: right; right:0px" @click="nextPage" class="floatButton" icon="el-icon-right"></el-button>'
+    + '<el-button style="float: right; right:0px;" @click="nextPage" class="floatButton" icon="el-icon-right"></el-button>'
     + '<br>'
     + '<p v-html="context"></p>'
     // + '<el-button style="float: left; " @click="lastPage" class="floatButton" icon="el-icon-back">上一页</el-button>'
     // + '<el-button style="float: right; " @click="nextPage" class="floatButton" icon="el-icon-right">下一页</el-button>'
-    // + '</div></div>'
+    + '</div></div>'
 var detail = {
     template: detailHtml,
     data: function () {

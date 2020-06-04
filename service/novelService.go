@@ -53,3 +53,24 @@ func ReadFile(filepath string) {
 	model.LibMap = novelsMap
 	model.LibMenu = menus
 }
+func WriteFileBatch(novels []model.Novel, basePath string) model.Msg {
+	for _, novel := range novels {
+		msg := writeFile(novel, basePath)
+		if model.Success != msg.Code {
+			return msg
+		}
+	}
+	return model.SuccessMsgNew()
+}
+
+func writeFile(novel model.Novel, basePath string) model.Msg {
+	filename := basePath + "//" + novel.Title
+	file, err := os.Create(filename)
+	if err != nil {
+		fail := model.FailMsgNew()
+		fail.Message = "文件创建失败：" + ""
+		fmt.Println("createFileErr"+filename, err)
+	}
+	file.WriteString(novel.Context)
+	return model.SuccessMsgNew()
+}

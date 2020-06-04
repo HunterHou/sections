@@ -10,9 +10,9 @@ func (msg Msg) ToString() string {
 	return "code:" + msg.Code + " msg:" + msg.Message
 }
 
-func NewSuccess() Msg {
+func SuccessMsgNew() Msg {
 	return Msg{Code: Success}
 }
-func NewFail() Msg {
+func FailMsgNew() Msg {
 	return Msg{Code: Fail}
 }

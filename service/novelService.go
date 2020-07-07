@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
-)
-import (
+
 	"../model"
 )
 
@@ -35,7 +34,7 @@ func ReadFile(filepath string) {
 		if lineStr == "" {
 			continue
 		}
-		if strings.HasPrefix(lineStr, "第") && strings.Contains(lineStr, "章") {
+		if strings.Contains(lineStr, "第") && strings.Contains(lineStr, "章") && len(lineStr) < 60 {
 			//开始章节
 			if title != "" {
 				curNovel := model.Novel{
